@@ -436,15 +436,10 @@ function main() {
   console.log('🚀 Generating fresh data with dynamic dates...\n');
 
   try {
-    // Generate and write statistics
     const statistics = generateStatistics();
-    writeJsonFile('statistics.json', statistics);
-
-    // Generate and write tasks
     const tasks = generateTasks();
-    writeJsonFile('tasks.json', tasks);
 
-    // Generate db.json for json-server (top-level keys map to REST resources)
+    // db.json is the only file json-server reads; top-level keys map to REST resources
     writeJsonFile('db.json', {
       tasks: tasks.tasks,
       statistics: statistics.statistics
