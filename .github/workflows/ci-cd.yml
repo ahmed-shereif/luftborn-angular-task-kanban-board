@@ -13,9 +13,6 @@ env:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: luftborn-task
     steps:
       - uses: actions/checkout@v4
 
@@ -23,7 +20,7 @@ jobs:
         with:
           node-version: 22
           cache: npm
-          cache-dependency-path: luftborn-task/package-lock.json
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
         run: npm ci
@@ -62,7 +59,7 @@ jobs:
       - name: Build and push image
         run: |
           IMAGE=${{ secrets.ACR_LOGIN_SERVER }}/${{ env.IMAGE_NAME }}
-          docker build -t $IMAGE:${{ steps.meta.outputs.tag }} -t $IMAGE:latest ./luftborn-task
+          docker build -t $IMAGE:${{ steps.meta.outputs.tag }} -t $IMAGE:latest .
           docker push $IMAGE:${{ steps.meta.outputs.tag }}
           docker push $IMAGE:latest
 
