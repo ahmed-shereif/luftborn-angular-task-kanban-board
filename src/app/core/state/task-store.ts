@@ -70,7 +70,10 @@ export class TaskStore {
         (t) => t.status === TaskStatus.Done && !!t.completedAt && isSameDay(new Date(t.completedAt), now),
       ).length,
       inProgressToday: tasks.filter(
-        (t) => t.status === TaskStatus.InProgress && isSameDay(new Date(t.updatedAt), now),
+        (t) =>
+          t.status === TaskStatus.InProgress &&
+          !!t.movedToInProgressAt &&
+          isSameDay(new Date(t.movedToInProgressAt), now),
       ).length,
       overdueToday: tasks.filter((t) => t.isOverdue && isSameDay(new Date(t.dueDate), now)).length,
     };
@@ -100,13 +103,29 @@ export class TaskStore {
     return undefined;
   }
 
+  /** Only assign `movedToInProgressAt` when the status is actually transitioning across the In Progress boundary. */
+  private resolveMovedToInProgressAt(current: Task, newStatus: TaskStatus): string | null | undefined {
+    if (newStatus === TaskStatus.InProgress && current.status !== TaskStatus.InProgress) {
+      return new Date().toISOString();
+    }
+    if (newStatus !== TaskStatus.InProgress && current.status === TaskStatus.InProgress) {
+      return null;
+    }
+    return undefined;
+  }
+
   updateTask(id: string, dto: UpdateTaskDto, activityType: ActivityType = 'updated') {
     const current = this.tasks().find((t) => t.id === id);
     const title = dto.title ?? current?.title ?? id;
     if (dto.status && current) {
-      const completedAt = this.resolveCompletedAt(current, dto.status);
+      const newStatus = dto.status;
+      const completedAt = this.resolveCompletedAt(current, newStatus);
       if (completedAt !== undefined) {
         dto = { ...dto, completedAt };
+      }
+      const movedToInProgressAt = this.resolveMovedToInProgressAt(current, newStatus);
+      if (movedToInProgressAt !== undefined) {
+        dto = { ...dto, movedToInProgressAt };
       }
     }
     return this.taskApi.update(id, dto).subscribe(() => {
@@ -144,11 +163,15 @@ export class TaskStore {
 
     const updates: { id: string; dto: UpdateTaskDto }[] = [];
     const completedAt = this.resolveCompletedAt(task, newStatus);
+    const movedToInProgressAt = this.resolveMovedToInProgressAt(task, newStatus);
     targetTasks.forEach((t, index) => {
       if (t.order !== index || t.status !== newStatus) {
         const dto: UpdateTaskDto = t.id === task.id ? { order: index, status: newStatus } : { order: index };
         if (t.id === task.id && completedAt !== undefined) {
           dto.completedAt = completedAt;
+        }
+        if (t.id === task.id && movedToInProgressAt !== undefined) {
+          dto.movedToInProgressAt = movedToInProgressAt;
         }
         updates.push({ id: t.id, dto });
       }

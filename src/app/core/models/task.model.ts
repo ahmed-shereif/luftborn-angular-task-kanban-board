@@ -26,6 +26,8 @@ export interface Task {
   dueDate: string;
   isOverdue?: boolean;
   completedAt?: string;
+  /** Timestamp of the most recent transition into the In Progress status. */
+  movedToInProgressAt?: string;
   assignee: Assignee;
   tags: string[];
   /** Position within its status column, used to persist kanban drag-drop ordering. */
@@ -35,5 +37,8 @@ export interface Task {
 }
 
 export type CreateTaskDto = Omit<Task, 'id' | 'createdAt' | 'updatedAt'>;
-/** `completedAt` additionally accepts `null` here so moving a task off Done can clear it server-side. */
-export type UpdateTaskDto = Partial<Omit<Task, 'id' | 'createdAt' | 'completedAt'>> & { completedAt?: string | null };
+/** `completedAt`/`movedToInProgressAt` additionally accept `null` here so moving a task off their target status can clear them server-side. */
+export type UpdateTaskDto = Partial<Omit<Task, 'id' | 'createdAt' | 'completedAt' | 'movedToInProgressAt'>> & {
+  completedAt?: string | null;
+  movedToInProgressAt?: string | null;
+};

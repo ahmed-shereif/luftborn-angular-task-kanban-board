@@ -265,7 +265,8 @@ function generateTasks() {
       },
       tags: ['Backend'],
       createdAt: addDays(now, -7).toISOString(),
-      updatedAt: now.toISOString()
+      updatedAt: now.toISOString(),
+      movedToInProgressAt: now.toISOString()
     },
     {
       id: 'task-006',
@@ -282,7 +283,8 @@ function generateTasks() {
       },
       tags: ['Performance'],
       createdAt: addDays(now, -6).toISOString(),
-      updatedAt: addDays(now, -0.5).toISOString()
+      updatedAt: addDays(now, -0.5).toISOString(),
+      movedToInProgressAt: addDays(now, -0.5).toISOString()
     },
     {
       id: 'task-007',
@@ -299,7 +301,8 @@ function generateTasks() {
       },
       tags: ['Backend'],
       createdAt: addDays(now, -8).toISOString(),
-      updatedAt: now.toISOString()
+      updatedAt: now.toISOString(),
+      movedToInProgressAt: now.toISOString()
     },
     {
       id: 'task-008',
@@ -316,7 +319,8 @@ function generateTasks() {
       },
       tags: ['Frontend'],
       createdAt: addDays(now, -9).toISOString(),
-      updatedAt: addDays(now, -0.3).toISOString()
+      updatedAt: addDays(now, -0.3).toISOString(),
+      movedToInProgressAt: addDays(now, -0.3).toISOString()
     },
     // OVERDUE IN PROGRESS TASK
     {
@@ -335,7 +339,8 @@ function generateTasks() {
       },
       tags: ['Backend', 'Critical'],
       createdAt: addDays(now, -14).toISOString(),
-      updatedAt: now.toISOString()
+      updatedAt: now.toISOString(),
+      movedToInProgressAt: now.toISOString()
     },
 
     // DONE TASKS
