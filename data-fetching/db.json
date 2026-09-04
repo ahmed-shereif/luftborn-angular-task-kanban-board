@@ -340,5 +340,39 @@
       "changeType": "negative",
       "color": "#D32F2F"
     }
+  ],
+  "users": [
+    {
+      "id": "user-001",
+      "name": "John Doe",
+      "avatar": "JD",
+      "email": "john.doe@company.com",
+      "role": "Product Designer",
+      "department": "Design"
+    },
+    {
+      "id": "user-002",
+      "name": "Sarah Smith",
+      "avatar": "SS",
+      "email": "sarah.smith@company.com",
+      "role": "Project Manager",
+      "department": "Operations"
+    },
+    {
+      "id": "user-003",
+      "name": "Mike Johnson",
+      "avatar": "MJ",
+      "email": "mike.johnson@company.com",
+      "role": "Backend Engineer",
+      "department": "Engineering"
+    },
+    {
+      "id": "user-004",
+      "name": "Emily Davis",
+      "avatar": "ED",
+      "email": "emily.davis@company.com",
+      "role": "Frontend Engineer",
+      "department": "Engineering"
+    }
   ]
 }

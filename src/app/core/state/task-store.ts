@@ -1,6 +1,7 @@
 import { computed, inject, Injectable } from '@angular/core';
-import { Task, TaskStatus } from '../models';
+import { CreateTaskDto, Task, TaskStatus, UpdateTaskDto } from '../models';
 import { TaskApiService } from '../services';
+import { ActivityStore, ActivityType } from './activity-store';
 import { FilterStore } from './filter-store';
 
 export interface TaskStats {
@@ -15,6 +16,7 @@ export interface TaskStats {
 export class TaskStore {
   private readonly taskApi = inject(TaskApiService);
   private readonly filterStore = inject(FilterStore);
+  private readonly activityStore = inject(ActivityStore);
 
   private readonly resource = this.taskApi.tasksResource;
 
@@ -62,20 +64,46 @@ export class TaskStore {
     };
   });
 
-  addTask(dto: Parameters<TaskApiService['create']>[0]) {
-    return this.taskApi.create(dto).subscribe(() => this.resource.reload());
+  addTask(dto: CreateTaskDto) {
+    return this.taskApi.create(dto).subscribe((created) => {
+      this.resource.reload();
+      this.activityStore.record({
+        type: 'created',
+        taskId: created.id,
+        message: `Created task "${created.title}"`,
+      });
+    });
   }
 
-  updateTask(id: string, dto: Parameters<TaskApiService['update']>[1]) {
-    return this.taskApi.update(id, dto).subscribe(() => this.resource.reload());
+  updateTask(id: string, dto: UpdateTaskDto, activityType: ActivityType = 'updated') {
+    const title = dto.title ?? this.tasks().find((t) => t.id === id)?.title ?? id;
+    return this.taskApi.update(id, dto).subscribe(() => {
+      this.resource.reload();
+      this.activityStore.record({
+        type: activityType,
+        taskId: id,
+        message:
+          activityType === 'moved'
+            ? `Moved task "${title}" to ${dto.status}`
+            : `Updated task "${title}"`,
+      });
+    });
   }
 
   deleteTask(id: string) {
-    return this.taskApi.delete(id).subscribe(() => this.resource.reload());
+    const title = this.tasks().find((t) => t.id === id)?.title ?? id;
+    return this.taskApi.delete(id).subscribe(() => {
+      this.resource.reload();
+      this.activityStore.record({
+        type: 'deleted',
+        taskId: id,
+        message: `Deleted task "${title}"`,
+      });
+    });
   }
 
   moveTask(task: Task, status: TaskStatus) {
-    return this.updateTask(task.id, { status });
+    return this.updateTask(task.id, { status }, 'moved');
   }
 
   reload() {

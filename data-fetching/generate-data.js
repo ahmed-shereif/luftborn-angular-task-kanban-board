@@ -85,6 +85,46 @@ function generateStatistics() {
 }
 
 /**
+ * Generate simple mocked users, used to populate task assignee dropdowns
+ */
+function generateUsers() {
+  return [
+    {
+      id: 'user-001',
+      name: 'John Doe',
+      avatar: 'JD',
+      email: 'john.doe@company.com',
+      role: 'Product Designer',
+      department: 'Design'
+    },
+    {
+      id: 'user-002',
+      name: 'Sarah Smith',
+      avatar: 'SS',
+      email: 'sarah.smith@company.com',
+      role: 'Project Manager',
+      department: 'Operations'
+    },
+    {
+      id: 'user-003',
+      name: 'Mike Johnson',
+      avatar: 'MJ',
+      email: 'mike.johnson@company.com',
+      role: 'Backend Engineer',
+      department: 'Engineering'
+    },
+    {
+      id: 'user-004',
+      name: 'Emily Davis',
+      avatar: 'ED',
+      email: 'emily.davis@company.com',
+      role: 'Frontend Engineer',
+      department: 'Engineering'
+    }
+  ];
+}
+
+/**
  * Check if a task is overdue
  */
 function isOverdue(dueDate) {
@@ -438,11 +478,13 @@ function main() {
   try {
     const statistics = generateStatistics();
     const tasks = generateTasks();
+    const users = generateUsers();
 
     // db.json is the only file json-server reads; top-level keys map to REST resources
     writeJsonFile('db.json', {
       tasks: tasks.tasks,
-      statistics: statistics.statistics
+      statistics: statistics.statistics,
+      users
     });
 
     console.log('\n✨ All data files generated successfully!');
