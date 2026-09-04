@@ -18,7 +18,8 @@
       ],
       "createdAt": "2026-08-31T17:05:10.551Z",
       "updatedAt": "2026-09-03T17:05:10.551Z",
-      "order": 2
+      "order": 0,
+      "completedAt": "2026-09-04T22:19:50.720Z"
     },
     {
       "id": "task-015",
@@ -60,7 +61,7 @@
       ],
       "createdAt": "2026-08-20T17:05:10.551Z",
       "updatedAt": "2026-09-03T17:05:10.551Z",
-      "order": 3
+      "order": 1
     },
     {
       "id": "task-004",
@@ -80,13 +81,13 @@
       ],
       "createdAt": "2026-08-30T17:05:10.551Z",
       "updatedAt": "2026-09-04T17:05:10.551Z",
-      "order": 1
+      "order": 2
     },
     {
       "id": "task-005",
       "title": "Implement user authentication",
       "description": "Add JWT-based authentication system with refresh tokens",
-      "status": "in_progress",
+      "status": "done",
       "priority": "high",
       "dueDate": "2026-09-07",
       "assignee": {
@@ -100,13 +101,13 @@
       ],
       "createdAt": "2026-08-28T17:05:10.551Z",
       "updatedAt": "2026-09-04T17:05:10.551Z",
-      "order": 0
+      "order": 1
     },
     {
       "id": "task-006",
       "title": "Optimize database queries",
       "description": "Review and optimize slow queries identified in performance audit",
-      "status": "in_progress",
+      "status": "todo",
       "priority": "medium",
       "dueDate": "2026-09-08",
       "assignee": {
@@ -120,7 +121,7 @@
       ],
       "createdAt": "2026-08-29T17:05:10.551Z",
       "updatedAt": "2026-09-03T17:05:10.551Z",
-      "order": 1
+      "order": 4
     },
     {
       "id": "task-007",
@@ -140,7 +141,7 @@
       ],
       "createdAt": "2026-08-27T17:05:10.551Z",
       "updatedAt": "2026-09-04T17:05:10.551Z",
-      "order": 4
+      "order": 0
     },
     {
       "id": "task-008",
@@ -160,7 +161,7 @@
       ],
       "createdAt": "2026-08-26T17:05:10.551Z",
       "updatedAt": "2026-09-03T17:05:10.551Z",
-      "order": 2
+      "order": 1
     },
     {
       "id": "task-017",
@@ -182,7 +183,7 @@
       ],
       "createdAt": "2026-08-21T17:05:10.551Z",
       "updatedAt": "2026-09-04T17:05:10.551Z",
-      "order": 3
+      "order": 2
     },
     {
       "id": "task-009",
@@ -203,13 +204,13 @@
       ],
       "createdAt": "2026-09-02T17:05:10.551Z",
       "updatedAt": "2026-09-04T17:05:10.551Z",
-      "order": 0
+      "order": 2
     },
     {
       "id": "task-010",
       "title": "Setup CI/CD pipeline",
       "description": "Configured GitHub Actions for automated testing and deployment",
-      "status": "done",
+      "status": "todo",
       "priority": "medium",
       "dueDate": "2026-09-02",
       "completedAt": "2026-09-03T17:05:10.551Z",
@@ -224,13 +225,13 @@
       ],
       "createdAt": "2026-08-26T17:05:10.551Z",
       "updatedAt": "2026-09-03T17:05:10.551Z",
-      "order": 1
+      "order": 3
     },
     {
       "id": "task-011",
       "title": "Write unit tests",
       "description": "Add comprehensive unit tests for authentication module",
-      "status": "done",
+      "status": "todo",
       "priority": "high",
       "dueDate": "2026-09-01",
       "completedAt": "2026-09-02T17:05:10.551Z",
@@ -245,13 +246,13 @@
       ],
       "createdAt": "2026-08-25T17:05:10.551Z",
       "updatedAt": "2026-09-02T17:05:10.551Z",
-      "order": 3
+      "order": 5
     },
     {
       "id": "task-012",
       "title": "Refactor payment module",
       "description": "Clean up and optimize payment processing code",
-      "status": "done",
+      "status": "todo",
       "priority": "medium",
       "dueDate": "2026-08-31",
       "completedAt": "2026-09-01T17:05:10.551Z",
@@ -266,7 +267,7 @@
       ],
       "createdAt": "2026-08-23T17:05:10.551Z",
       "updatedAt": "2026-09-01T17:05:10.551Z",
-      "order": 4
+      "order": 6
     },
     {
       "id": "task-013",
@@ -287,7 +288,7 @@
       ],
       "createdAt": "2026-08-22T17:05:10.551Z",
       "updatedAt": "2026-08-31T17:05:10.551Z",
-      "order": 5
+      "order": 3
     },
     {
       "id": "task-014",
@@ -308,7 +309,7 @@
       ],
       "createdAt": "2026-08-21T17:05:10.551Z",
       "updatedAt": "2026-08-30T17:05:10.551Z",
-      "order": 6
+      "order": 4
     },
     {
       "title": "new task",
@@ -323,7 +324,7 @@
         "email": "sarah.smith@company.com"
       },
       "tags": [],
-      "order": 5,
+      "order": 3,
       "id": "ZLuzvnPSII0"
     },
     {
@@ -339,14 +340,14 @@
         "email": "emily.davis@company.com"
       },
       "tags": [],
-      "order": 6,
+      "order": 4,
       "id": "QnWRRl-UO1U"
     },
     {
       "title": "daSD",
       "description": "asd",
       "priority": "low",
-      "status": "todo",
+      "status": "done",
       "dueDate": "2026-09-30",
       "assignee": {
         "id": "user-003",
@@ -355,8 +356,24 @@
         "email": "mike.johnson@company.com"
       },
       "tags": [],
-      "order": 2,
+      "order": 5,
       "id": "fcVD73jCA6s"
+    },
+    {
+      "title": "qqq",
+      "description": "ssssssss",
+      "priority": "medium",
+      "status": "done",
+      "dueDate": "2026-09-05",
+      "assignee": {
+        "id": "user-002",
+        "name": "Sarah Smith",
+        "avatar": "SS",
+        "email": "sarah.smith@company.com"
+      },
+      "tags": [],
+      "order": 6,
+      "id": "hkMmrvO1gFA"
     }
   ],
   "statistics": [

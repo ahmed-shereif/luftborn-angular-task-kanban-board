@@ -10,6 +10,22 @@ export interface TaskStats {
   completed: number;
   inProgress: number;
   overdue: number;
+  addedThisWeek: number;
+  completedToday: number;
+  inProgressToday: number;
+  overdueToday: number;
+}
+
+function isSameDay(a: Date, b: Date): boolean {
+  return a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
+}
+
+function daysSince(dateStr: string, now: Date): number {
+  const MS_PER_DAY = 1000 * 60 * 60 * 24;
+  const start = new Date(dateStr);
+  const startDay = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+  const nowDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  return Math.round((nowDay.getTime() - startDay.getTime()) / MS_PER_DAY);
 }
 
 /** Central task state: fetch via httpResource, mutate via HttpClient, derive filtered/grouped views. */
@@ -43,11 +59,20 @@ export class TaskStore {
 
   readonly liveStats = computed<TaskStats>(() => {
     const tasks = this.tasks();
+    const now = new Date();
     return {
       total: tasks.length,
       completed: tasks.filter((t) => t.status === TaskStatus.Done).length,
       inProgress: tasks.filter((t) => t.status === TaskStatus.InProgress).length,
       overdue: tasks.filter((t) => t.isOverdue).length,
+      addedThisWeek: tasks.filter((t) => daysSince(t.createdAt, now) < 7).length,
+      completedToday: tasks.filter(
+        (t) => t.status === TaskStatus.Done && !!t.completedAt && isSameDay(new Date(t.completedAt), now),
+      ).length,
+      inProgressToday: tasks.filter(
+        (t) => t.status === TaskStatus.InProgress && isSameDay(new Date(t.updatedAt), now),
+      ).length,
+      overdueToday: tasks.filter((t) => t.isOverdue && isSameDay(new Date(t.dueDate), now)).length,
     };
   });
 
@@ -64,8 +89,26 @@ export class TaskStore {
     });
   }
 
+  /** Only assign `completedAt` when the status is actually transitioning across the Done boundary. */
+  private resolveCompletedAt(current: Task, newStatus: TaskStatus): string | null | undefined {
+    if (newStatus === TaskStatus.Done && current.status !== TaskStatus.Done) {
+      return new Date().toISOString();
+    }
+    if (newStatus !== TaskStatus.Done && current.status === TaskStatus.Done) {
+      return null;
+    }
+    return undefined;
+  }
+
   updateTask(id: string, dto: UpdateTaskDto, activityType: ActivityType = 'updated') {
-    const title = dto.title ?? this.tasks().find((t) => t.id === id)?.title ?? id;
+    const current = this.tasks().find((t) => t.id === id);
+    const title = dto.title ?? current?.title ?? id;
+    if (dto.status && current) {
+      const completedAt = this.resolveCompletedAt(current, dto.status);
+      if (completedAt !== undefined) {
+        dto = { ...dto, completedAt };
+      }
+    }
     return this.taskApi.update(id, dto).subscribe(() => {
       this.resource.reload();
       this.activityStore.record({
@@ -100,9 +143,14 @@ export class TaskStore {
     targetTasks.splice(newIndex, 0, task);
 
     const updates: { id: string; dto: UpdateTaskDto }[] = [];
+    const completedAt = this.resolveCompletedAt(task, newStatus);
     targetTasks.forEach((t, index) => {
       if (t.order !== index || t.status !== newStatus) {
-        updates.push({ id: t.id, dto: t.id === task.id ? { order: index, status: newStatus } : { order: index } });
+        const dto: UpdateTaskDto = t.id === task.id ? { order: index, status: newStatus } : { order: index };
+        if (t.id === task.id && completedAt !== undefined) {
+          dto.completedAt = completedAt;
+        }
+        updates.push({ id: t.id, dto });
       }
     });
 

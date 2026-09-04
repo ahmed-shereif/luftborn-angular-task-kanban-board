@@ -35,4 +35,5 @@ export interface Task {
 }
 
 export type CreateTaskDto = Omit<Task, 'id' | 'createdAt' | 'updatedAt'>;
-export type UpdateTaskDto = Partial<Omit<Task, 'id' | 'createdAt'>>;
+/** `completedAt` additionally accepts `null` here so moving a task off Done can clear it server-side. */
+export type UpdateTaskDto = Partial<Omit<Task, 'id' | 'createdAt' | 'completedAt'>> & { completedAt?: string | null };

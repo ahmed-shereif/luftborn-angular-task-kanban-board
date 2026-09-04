@@ -11,7 +11,7 @@
 .stat-card__header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: start;
 }
 
 .stat-card__title {
@@ -21,6 +21,7 @@
 
 .stat-card__icon {
   color: var(--app-color-primary);
+  padding-inline-end: 8px;
 }
 
 .stat-card__value {
