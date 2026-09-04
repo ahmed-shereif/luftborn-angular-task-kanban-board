@@ -1,0 +1,19 @@
+.task-form-dialog__content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 420px;
+}
+
+.task-form-dialog__field {
+  width: 100%;
+}
+
+.task-form-dialog__row {
+  display: flex;
+  gap: 12px;
+
+  .task-form-dialog__field {
+    flex: 1;
+  }
+}

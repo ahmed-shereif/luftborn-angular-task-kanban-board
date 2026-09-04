@@ -449,10 +449,18 @@ function generateTasks() {
     }
   ];
 
+  // Assign a per-status `order` matching each task's position within its column.
+  const statusCounters = {};
+  const orderedTasks = tasks.map((task) => {
+    const order = statusCounters[task.status] ?? 0;
+    statusCounters[task.status] = order + 1;
+    return { ...task, order };
+  });
+
   return {
-    tasks,
+    tasks: orderedTasks,
     meta: {
-      totalCount: tasks.length,
+      totalCount: orderedTasks.length,
       lastUpdated: now.toISOString()
     }
   };

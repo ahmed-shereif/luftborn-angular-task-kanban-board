@@ -1,0 +1,28 @@
+<div class="task-column">
+  <div class="task-column__header">
+    <span class="task-column__title">{{ title() }}</span>
+    <span class="task-column__count">{{ tasks().length }}</span>
+  </div>
+
+  <div
+    class="task-column__list"
+    cdkDropList
+    [id]="status()"
+    [cdkDropListData]="tasks()"
+    [cdkDropListConnectedTo]="connectedTo()"
+    (cdkDropListDropped)="onDrop($event)"
+  >
+    @for (task of tasks(); track task.id) {
+      <div class="task-column__item" cdkDrag [cdkDragData]="task">
+        <app-task-card
+          [task]="task"
+          (edit)="edit.emit($event)"
+          (delete)="delete.emit($event)"
+          (statusChange)="statusChange.emit($event)"
+        />
+      </div>
+    } @empty {
+      <p class="task-column__empty">No tasks</p>
+    }
+  </div>
+</div>

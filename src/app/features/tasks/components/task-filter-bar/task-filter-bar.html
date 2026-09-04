@@ -1,0 +1,38 @@
+<div class="task-filter-bar">
+  <div class="task-filter-bar__tabs">
+    @for (tab of statusTabs; track tab.value) {
+      <button
+        type="button"
+        class="task-filter-bar__tab"
+        [class.task-filter-bar__tab--active]="status() === tab.value"
+        (click)="statusChange.emit(tab.value)"
+      >
+        {{ tab.label }}
+      </button>
+    }
+  </div>
+
+  <div class="task-filter-bar__actions">
+    <button
+      mat-stroked-button
+      type="button"
+      class="task-filter-bar__priority"
+      [matMenuTriggerFor]="priorityMenu"
+    >
+      {{ priority() === 'all' ? 'Priority' : priority() }}
+      <mat-icon iconPositionEnd>arrow_drop_down</mat-icon>
+    </button>
+    <mat-menu #priorityMenu="matMenu">
+      @for (option of priorityOptions; track option) {
+        <button mat-menu-item type="button" (click)="priorityChange.emit(option)">
+          {{ option === 'all' ? 'All priorities' : option }}
+        </button>
+      }
+    </mat-menu>
+
+    <button mat-flat-button type="button" class="task-filter-bar__new-task" (click)="newTask.emit()">
+      <mat-icon>add</mat-icon>
+      New Task
+    </button>
+  </div>
+</div>

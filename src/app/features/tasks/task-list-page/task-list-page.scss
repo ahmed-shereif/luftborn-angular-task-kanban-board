@@ -1,0 +1,18 @@
+.task-list-page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 100%;
+}
+
+.task-list-page__search {
+  width: 100%;
+  max-width: 420px;
+}
+
+.task-list-page__board {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  overflow-x: auto;
+}

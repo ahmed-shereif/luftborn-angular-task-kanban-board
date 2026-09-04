@@ -18,8 +18,18 @@ export class UserAvatar {
   readonly user = input.required<AvatarUser>();
   readonly size = input<AvatarSize>('md');
 
-  /** First letter of each of the first two words in the user's name, e.g. "Jane Doe" -> "JD". */
+  /** The data's `avatar` field is an image URL only when it looks like one (db.json ships plain initials like "JD"). */
+  readonly imageUrl = computed(() => {
+    const avatar = this.user().avatar;
+    return avatar && /^(https?:)?\/\//.test(avatar) ? avatar : undefined;
+  });
+
+  /** Uses the provided avatar text verbatim if it's not a URL, else derives initials from the name. */
   readonly initials = computed(() => {
+    const avatar = this.user().avatar;
+    if (avatar && !this.imageUrl()) {
+      return avatar.toUpperCase();
+    }
     const parts = this.user().name.trim().split(/\s+/).filter(Boolean);
     return parts
       .slice(0, 2)

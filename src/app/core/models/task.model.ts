@@ -28,6 +28,8 @@ export interface Task {
   completedAt?: string;
   assignee: Assignee;
   tags: string[];
+  /** Position within its status column, used to persist kanban drag-drop ordering. */
+  order: number;
   createdAt: string;
   updatedAt: string;
 }

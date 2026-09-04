@@ -1,4 +1,5 @@
 import { computed, inject, Injectable } from '@angular/core';
+import { firstValueFrom } from 'rxjs';
 import { CreateTaskDto, Task, TaskStatus, UpdateTaskDto } from '../models';
 import { TaskApiService } from '../services';
 import { ActivityStore, ActivityType } from './activity-store';
@@ -64,8 +65,10 @@ export class TaskStore {
     };
   });
 
-  addTask(dto: CreateTaskDto) {
-    return this.taskApi.create(dto).subscribe((created) => {
+  /** Appends the new task to the end of its target status column. */
+  addTask(dto: Omit<CreateTaskDto, 'order'>) {
+    const order = this.tasksByStatus()[dto.status].length;
+    return this.taskApi.create({ ...dto, order }).subscribe((created) => {
       this.resource.reload();
       this.activityStore.record({
         type: 'created',
@@ -102,8 +105,38 @@ export class TaskStore {
     });
   }
 
-  moveTask(task: Task, status: TaskStatus) {
-    return this.updateTask(task.id, { status }, 'moved');
+  /** Moves a task to `newStatus` at `newIndex`, reindexing `order` for every task shifted in the source/target columns. */
+  async moveTask(task: Task, newStatus: TaskStatus, newIndex: number): Promise<void> {
+    const columns = this.tasksByStatus();
+    const sameColumn = task.status === newStatus;
+
+    const targetTasks = columns[newStatus].filter((t) => t.id !== task.id);
+    targetTasks.splice(newIndex, 0, task);
+
+    const updates: { id: string; dto: UpdateTaskDto }[] = [];
+    targetTasks.forEach((t, index) => {
+      if (t.order !== index || t.status !== newStatus) {
+        updates.push({ id: t.id, dto: t.id === task.id ? { order: index, status: newStatus } : { order: index } });
+      }
+    });
+
+    if (!sameColumn) {
+      columns[task.status]
+        .filter((t) => t.id !== task.id)
+        .forEach((t, index) => {
+          if (t.order !== index) {
+            updates.push({ id: t.id, dto: { order: index } });
+          }
+        });
+    }
+
+    await Promise.all(updates.map((update) => firstValueFrom(this.taskApi.update(update.id, update.dto))));
+    this.resource.reload();
+    this.activityStore.record({
+      type: 'moved',
+      taskId: task.id,
+      message: `Moved task "${task.title}" to ${newStatus}`,
+    });
   }
 
   reload() {

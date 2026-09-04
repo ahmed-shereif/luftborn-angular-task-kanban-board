@@ -1,0 +1,52 @@
+<div class="task-card">
+  <div class="task-card__header">
+    <span class="task-card__priority task-card__priority--{{ task().priority }}">{{ task().priority }}</span>
+
+    @if (!readonlyMode()) {
+      <button
+        mat-icon-button
+        type="button"
+        class="task-card__menu-trigger"
+        [matMenuTriggerFor]="menu"
+        aria-label="Task actions"
+      >
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item type="button" (click)="onEdit()">
+          <mat-icon>edit</mat-icon>
+          <span>Edit</span>
+        </button>
+        <button mat-menu-item type="button" (click)="onDelete()">
+          <mat-icon>delete</mat-icon>
+          <span>Delete</span>
+        </button>
+        @for (status of nextStatuses(); track status) {
+          <button mat-menu-item type="button" (click)="onStatusChange(status)">
+            <mat-icon>arrow_forward</mat-icon>
+            <span>Move to {{ status }}</span>
+          </button>
+        }
+      </mat-menu>
+    }
+  </div>
+
+  <h3 class="task-card__title">{{ task().title }}</h3>
+  <p class="task-card__description">{{ task().description }}</p>
+
+  @if (task().tags.length) {
+    <mat-chip-set class="task-card__tags">
+      @for (tag of task().tags; track tag) {
+        <mat-chip disabled>{{ tag }}</mat-chip>
+      }
+    </mat-chip-set>
+  }
+
+  <div class="task-card__footer">
+    <span class="task-card__due-date" [class.task-card__due-date--overdue]="isOverdue()">
+      <mat-icon inline>event</mat-icon>
+      {{ task().dueDate }}
+    </span>
+    <app-user-avatar [user]="task().assignee" size="sm" />
+  </div>
+</div>
