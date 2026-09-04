@@ -1,8 +1,14 @@
+:host {
+  display: flex;
+  min-width: 0;
+}
+
 .task-column {
   display: flex;
   flex-direction: column;
   min-width: 280px;
   flex: 1;
+  min-height: 0;
   background: var(--app-bg-surface);
   border-radius: var(--app-radius-lg);
   padding: 12px;
@@ -40,6 +46,7 @@
   gap: 8px;
   min-height: 60px;
   flex: 1;
+  overflow-y: auto;
 }
 
 .task-column__empty {

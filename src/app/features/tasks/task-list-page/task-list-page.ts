@@ -7,6 +7,7 @@ import { ConfirmDialog, ConfirmDialogData } from '../../../shared/components/con
 import { TaskColumn, TaskColumnDropEvent } from '../components/task-column/task-column';
 import { TaskFilterBar } from '../components/task-filter-bar/task-filter-bar';
 import { TaskFormDialog, TaskFormDialogData, TaskFormResult } from '../components/task-form-dialog/task-form-dialog';
+import { TaskStats } from '../components/task-stats/task-stats';
 
 const COLUMNS: { status: TaskStatus; title: string }[] = [
   { status: TaskStatus.Todo, title: 'To Do' },
@@ -17,7 +18,7 @@ const COLUMNS: { status: TaskStatus; title: string }[] = [
 @Component({
   selector: 'app-task-list-page',
   standalone: true,
-  imports: [TaskColumn, TaskFilterBar],
+  imports: [TaskColumn, TaskFilterBar, TaskStats],
   templateUrl: './task-list-page.html',
   styleUrl: './task-list-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

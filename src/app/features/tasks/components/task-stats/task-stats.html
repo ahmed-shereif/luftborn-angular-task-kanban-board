@@ -1,0 +1,34 @@
+<div class="task-stats">
+  <app-stat-card
+    title="Total Tasks"
+    [value]="stats().total"
+    icon="bar_chart"
+    [change]="'+' + stats().addedThisWeek"
+    changeLabel="this week"
+    [changeType]="stats().addedThisWeek > 0 ? 'positive' : 'neutral'"
+  />
+  <app-stat-card
+    title="Completed"
+    [value]="stats().completed"
+    icon="check_circle"
+    [change]="'+' + stats().completedToday"
+    changeLabel="today"
+    [changeType]="stats().completedToday > 0 ? 'positive' : 'neutral'"
+  />
+  <app-stat-card
+    title="In Progress"
+    [value]="stats().inProgress"
+    icon="autorenew"
+    [change]="'+' + stats().inProgressToday"
+    changeLabel="today"
+    [changeType]="stats().inProgressToday > 0 ? 'positive' : 'neutral'"
+  />
+  <app-stat-card
+    title="Overdue"
+    [value]="stats().overdue"
+    icon="warning"
+    [change]="'+' + stats().overdueToday"
+    changeLabel="today"
+    [changeType]="stats().overdueToday > 0 ? 'negative' : 'neutral'"
+  />
+</div>

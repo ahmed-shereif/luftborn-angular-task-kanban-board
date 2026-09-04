@@ -1,16 +1,11 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { TaskStore } from '../../../core/state';
-import { StatCard } from '../../../shared/components';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard-page',
   standalone: true,
-  imports: [StatCard],
+  imports: [],
   templateUrl: './dashboard-page.html',
   styleUrl: './dashboard-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DashboardPage {
-  private readonly taskStore = inject(TaskStore);
-  readonly stats = this.taskStore.liveStats;
-}
+export class DashboardPage {}

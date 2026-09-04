@@ -1,3 +1,8 @@
+:host {
+  display: block;
+  height: 100%;
+}
+
 .task-list-page {
   display: flex;
   flex-direction: column;
@@ -6,8 +11,15 @@
 }
 
 .task-list-page__board {
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(280px, 1fr);
+  flex: 1;
+  width: 100%;
   gap: 16px;
   align-items: flex-start;
   overflow-x: auto;
+  max-height:600px;
+  overflow-x: scroll;
 }
+
