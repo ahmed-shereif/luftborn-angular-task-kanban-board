@@ -1,2 +1,1 @@
-<!-- Run linters and Prettier only on the files you modified, rather than the whole codebase. -->
 npx lint-staged

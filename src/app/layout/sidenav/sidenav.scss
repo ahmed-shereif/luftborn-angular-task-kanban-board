@@ -30,7 +30,7 @@
       background-color 0.15s ease,
       color 0.15s ease;
 
-    &:hover {
+    &:not(&--active):hover {
       background-color: var(--app-sidenav-hover-bg);
     }
 
