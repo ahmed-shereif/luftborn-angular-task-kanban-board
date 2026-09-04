@@ -1,0 +1,13 @@
+.shell {
+  height: calc(100vh - 64px);
+
+  &__sidenav {
+    width: 240px;
+    border-right: 1px solid var(--app-border-color);
+  }
+
+  &__content {
+    padding: 24px;
+    background-color: var(--app-bg-page);
+  }
+}

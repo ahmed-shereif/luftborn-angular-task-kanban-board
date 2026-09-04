@@ -1,0 +1,16 @@
+<app-toolbar (menuToggle)="toggleSidenav()" />
+
+<mat-sidenav-container class="shell">
+  <mat-sidenav
+    class="shell__sidenav"
+    [mode]="sidenavMode()"
+    [opened]="sidenavOpened()"
+    [fixedInViewport]="true"
+    fixedTopGap="64"
+  >
+    <app-sidenav />
+  </mat-sidenav>
+  <mat-sidenav-content class="shell__content">
+    <router-outlet />
+  </mat-sidenav-content>
+</mat-sidenav-container>

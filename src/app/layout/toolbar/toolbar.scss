@@ -1,0 +1,95 @@
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: var(--app-bg-surface);
+  color: var(--app-text-primary);
+  border-bottom: 1px solid var(--app-border-color);
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+  }
+
+  &__brand-icon {
+    color: var(--app-color-primary);
+  }
+
+  &__brand-name {
+    font-weight: 700;
+    font-size: 16px;
+  }
+
+  &__search {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__search-icon {
+    position: relative;
+    left: 28px;
+    color: var(--app-text-muted);
+    pointer-events: none;
+  }
+
+  &__search-input {
+    width: 100%;
+    max-width: 420px;
+    height: 36px;
+    border: 1px solid var(--app-border-color);
+    border-radius: var(--app-radius-lg);
+    background-color: var(--app-bg-page);
+    padding: 0 16px 0 36px;
+    font-size: 14px;
+    color: var(--app-text-primary);
+
+    &::placeholder {
+      color: var(--app-text-muted);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: var(--app-color-primary);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__bell {
+    position: relative;
+  }
+
+  &__bell-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--app-status-warning);
+  }
+
+  &__avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: var(--app-avatar-bg);
+    color: var(--app-avatar-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+  }
+}

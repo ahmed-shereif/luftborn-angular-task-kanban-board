@@ -1,0 +1,39 @@
+// App-wide design tokens (Figma "Task Manager" design). Consumed as CSS custom
+// properties so both SCSS and templates/components can reference them consistently.
+:root {
+  --app-color-primary: #2563eb;
+  --app-color-primary-hover: #1d4ed8;
+  --app-color-primary-light: #eff6ff;
+  --app-color-on-primary: #ffffff;
+
+  --app-bg-page: #f3f4f6;
+  --app-bg-surface: #ffffff;
+  --app-border-color: #e5e7eb;
+
+  --app-text-primary: #111827;
+  --app-text-secondary: #6b7280;
+  --app-text-muted: #9ca3af;
+
+  --app-status-success: #16a34a;
+  --app-status-success-bg: #dcfce7;
+  --app-status-danger: #dc2626;
+  --app-status-danger-bg: #fee2e2;
+  --app-status-warning: #d97706;
+  --app-status-warning-bg: #fef3c7;
+  --app-status-neutral: #6b7280;
+  --app-status-neutral-bg: #f3f4f6;
+
+  --app-sidenav-bg: var(--app-bg-surface);
+  --app-sidenav-text: var(--app-text-secondary);
+  --app-sidenav-icon: var(--app-text-secondary);
+  --app-sidenav-hover-bg: #f3f4f6;
+  --app-sidenav-active-bg: var(--app-color-primary);
+  --app-sidenav-active-text: var(--app-color-on-primary);
+
+  --app-avatar-bg: var(--app-color-primary);
+  --app-avatar-text: #ffffff;
+
+  --app-radius-sm: 6px;
+  --app-radius-md: 8px;
+  --app-radius-lg: 12px;
+}

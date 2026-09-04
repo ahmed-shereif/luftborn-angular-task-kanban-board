@@ -1,0 +1,34 @@
+<mat-toolbar class="toolbar">
+  <button
+    mat-icon-button
+    type="button"
+    class="toolbar__menu"
+    aria-label="Toggle navigation menu"
+    (click)="menuToggle.emit()"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <div class="toolbar__brand">
+    <mat-icon class="toolbar__brand-icon">dashboard</mat-icon>
+    <span class="toolbar__brand-name">Task Manager</span>
+  </div>
+
+  <div class="toolbar__search">
+    <mat-icon class="toolbar__search-icon">search</mat-icon>
+    <input
+      class="toolbar__search-input"
+      type="search"
+      placeholder="Search tasks..."
+      aria-label="Search tasks"
+    />
+  </div>
+
+  <div class="toolbar__actions">
+    <button mat-icon-button type="button" class="toolbar__bell" aria-label="Notifications">
+      <mat-icon>notifications</mat-icon>
+      <span class="toolbar__bell-badge"></span>
+    </button>
+    <div class="toolbar__avatar" aria-hidden="true">{{ currentUserInitials }}</div>
+  </div>
+</mat-toolbar>
