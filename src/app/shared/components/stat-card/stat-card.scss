@@ -25,7 +25,7 @@
 
 .stat-card__value {
   font-size: 1.75rem;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--app-text-primary);
 }
 
@@ -34,7 +34,7 @@
   align-items: center;
   gap: 4px;
   font-size: 0.8125rem;
-  font-weight: 500;
+  font-weight: 450;
 
   &--positive {
     color: var(--app-status-success);
