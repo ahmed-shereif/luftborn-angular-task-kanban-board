@@ -1,0 +1,55 @@
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  background: var(--app-bg-surface);
+  border: 1px solid var(--app-border-color);
+  border-radius: var(--app-radius-lg);
+}
+
+.stat-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.stat-card__title {
+  font-size: 0.875rem;
+  color: var(--app-text-secondary);
+}
+
+.stat-card__icon {
+  color: var(--app-color-primary);
+}
+
+.stat-card__value {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--app-text-primary);
+}
+
+.stat-card__change {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+
+  &--positive {
+    color: var(--app-status-success);
+  }
+
+  &--negative {
+    color: var(--app-status-danger);
+  }
+
+  &--neutral {
+    color: var(--app-status-neutral);
+  }
+}
+
+.stat-card__change-label {
+  color: var(--app-text-muted);
+  font-weight: 400;
+}

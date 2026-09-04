@@ -1,0 +1,17 @@
+<div class="stat-card">
+  <div class="stat-card__header">
+    <span class="stat-card__title">{{ title() }}</span>
+    <mat-icon class="stat-card__icon">{{ icon() }}</mat-icon>
+  </div>
+
+  <div class="stat-card__value">{{ value() }}</div>
+
+  @if (change()) {
+    <div class="stat-card__change" [class]="changeClass()">
+      <span>{{ change() }}</span>
+      @if (changeLabel()) {
+        <span class="stat-card__change-label">{{ changeLabel() }}</span>
+      }
+    </div>
+  }
+</div>

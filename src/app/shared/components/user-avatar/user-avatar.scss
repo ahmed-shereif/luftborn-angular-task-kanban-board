@@ -1,0 +1,33 @@
+.user-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 50%;
+  object-fit: cover;
+  font-weight: 600;
+  line-height: 1;
+
+  &--sm {
+    width: 24px;
+    height: 24px;
+    font-size: 0.625rem;
+  }
+
+  &--md {
+    width: 32px;
+    height: 32px;
+    font-size: 0.75rem;
+  }
+
+  &--lg {
+    width: 48px;
+    height: 48px;
+    font-size: 1rem;
+  }
+
+  &--initials {
+    background: var(--app-avatar-bg);
+    color: var(--app-avatar-text);
+  }
+}

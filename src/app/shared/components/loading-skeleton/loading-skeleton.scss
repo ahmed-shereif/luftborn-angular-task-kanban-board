@@ -1,0 +1,29 @@
+@keyframes loading-skeleton-pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.loading-skeleton {
+  display: inline-block;
+  background: var(--app-border-color);
+  animation: loading-skeleton-pulse 1.4s ease-in-out infinite;
+
+  &--rect {
+    border-radius: var(--app-radius-sm);
+  }
+
+  &--circle {
+    border-radius: 50%;
+  }
+
+  &--text {
+    border-radius: var(--app-radius-sm);
+  }
+}

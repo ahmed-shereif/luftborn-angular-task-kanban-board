@@ -1,0 +1,7 @@
+@if (user().avatar) {
+  <img class="user-avatar user-avatar--{{ size() }}" [src]="user().avatar" [alt]="user().name" />
+} @else {
+  <span class="user-avatar user-avatar--{{ size() }} user-avatar--initials" [attr.title]="user().name">
+    {{ initials() }}
+  </span>
+}
