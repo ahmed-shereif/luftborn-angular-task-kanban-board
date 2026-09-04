@@ -4,6 +4,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { Task, TaskStatus } from '../../../../core/models';
 import { UserAvatar } from '../../../../shared/components/user-avatar/user-avatar';
+import { getTaskDueStatus } from '../../../../shared/utils';
 
 @Component({
   selector: 'app-task-card',
@@ -28,6 +29,8 @@ export class TaskCard {
     const task = this.task();
     return task.status !== TaskStatus.Done && (task.isOverdue ?? new Date(task.dueDate) < new Date());
   });
+
+  readonly dueStatus = computed(() => getTaskDueStatus(this.task()));
 
   readonly nextStatuses = computed(() =>
     Object.values(TaskStatus).filter((status) => status !== this.task().status),

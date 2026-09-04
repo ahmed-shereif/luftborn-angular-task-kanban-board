@@ -34,9 +34,9 @@
   <h3 class="task-card__title">{{ task().title }}</h3>
   <p class="task-card__description">{{ task().description }}</p>
 
-  <span class="task-card__due-date" [class.task-card__due-date--overdue]="isOverdue()">
-    <mat-icon inline>event</mat-icon>
-    {{ task().dueDate }}
+  <span class="task-card__due-date task-card__due-date--{{ dueStatus().variant }}">
+    <mat-icon inline>{{ dueStatus().icon }}</mat-icon>
+    {{ dueStatus().label }}
   </span>
   @if (task().tags.length) {
     <div class="task-card__tags">
