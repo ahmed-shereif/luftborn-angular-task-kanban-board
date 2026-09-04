@@ -1,11 +1,5 @@
-import { ChangeDetectionStrategy, Component, computed, effect, inject } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
-import { debounceTime, distinctUntilChanged } from 'rxjs';
 import { Task, TaskPriority, TaskStatus } from '../../../core/models';
 import { NotificationService } from '../../../core/services';
 import { FilterStore, TaskStore } from '../../../core/state';
@@ -23,12 +17,14 @@ const COLUMNS: { status: TaskStatus; title: string }[] = [
 @Component({
   selector: 'app-task-list-page',
   standalone: true,
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatIconModule, TaskColumn, TaskFilterBar],
+  imports: [TaskColumn, TaskFilterBar],
   templateUrl: './task-list-page.html',
   styleUrl: './task-list-page.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TaskListPage {
+  // since TaskStore injected in root, its state is shared across the entire application.
+  // and will call the api only when the it is injected for the first time.
   private readonly taskStore = inject(TaskStore);
   private readonly filterStore = inject(FilterStore);
   private readonly dialog = inject(MatDialog);
@@ -36,28 +32,10 @@ export class TaskListPage {
 
   readonly columns = COLUMNS;
 
-  readonly searchControl = new FormControl('', { nonNullable: true });
-  private readonly debouncedSearch = toSignal(
-    this.searchControl.valueChanges.pipe(debounceTime(280), distinctUntilChanged()),
-    { initialValue: '' },
-  );
-
   readonly status = this.filterStore.status;
   readonly priority = this.filterStore.priority;
 
-  readonly tasksByStatus = computed(() => {
-    const filtered = new Set(this.taskStore.filteredTasks().map((task) => task.id));
-    const byStatus = this.taskStore.tasksByStatus();
-    return {
-      [TaskStatus.Todo]: byStatus[TaskStatus.Todo].filter((task) => filtered.has(task.id)),
-      [TaskStatus.InProgress]: byStatus[TaskStatus.InProgress].filter((task) => filtered.has(task.id)),
-      [TaskStatus.Done]: byStatus[TaskStatus.Done].filter((task) => filtered.has(task.id)),
-    };
-  });
-
-  constructor() {
-    effect(() => this.filterStore.setSearchTerm(this.debouncedSearch()));
-  }
+  readonly tasksByStatus = this.taskStore.tasksByStatus;
 
   onStatusFilterChange(value: TaskStatus | 'all'): void {
     this.filterStore.setStatus(value);
@@ -112,6 +90,7 @@ export class TaskListPage {
   }
 
   onDrop({ event, status }: TaskColumnDropEvent): void {
+    console.log('👨‍💻', event, status);
     const task = event.item.data as Task;
     if (event.previousContainer === event.container && event.previousIndex === event.currentIndex) {
       return;

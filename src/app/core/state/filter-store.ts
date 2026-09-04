@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { effect, Injectable, signal } from '@angular/core';
 import { TaskPriority, TaskStatus } from '../models';
 
 export interface FilterCriteria {
@@ -44,5 +44,12 @@ export class FilterStore {
     this.status.set(INITIAL_FILTERS.status);
     this.priority.set(INITIAL_FILTERS.priority);
     this.assigneeId.set(INITIAL_FILTERS.assigneeId);
+  }
+
+  constructor() {
+    effect(() => {
+      // Whenever any of the filter signals change, this code runs automatically
+      console.log(`Signal changed! SearchTerm: ${this.searchTerm()}, Status: ${this.status()}, Priority: ${this.priority()}, AssigneeId: ${this.assigneeId()}`);
+    });
   }
 }

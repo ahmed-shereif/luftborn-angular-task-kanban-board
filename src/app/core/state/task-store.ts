@@ -19,7 +19,14 @@ export class TaskStore {
   private readonly filterStore = inject(FilterStore);
   private readonly activityStore = inject(ActivityStore);
 
-  private readonly resource = this.taskApi.tasksResource;
+
+
+  private readonly resource = this.taskApi.tasksResource(() => ({
+    status: this.filterStore.status(),
+    priority: this.filterStore.priority(),
+    assigneeId: this.filterStore.assigneeId(),
+    searchTerm: this.filterStore.searchTerm(),
+  }));
 
   readonly tasks = computed(() => this.resource.value() ?? []);
   readonly isLoading = computed(() => this.resource.isLoading());
@@ -32,27 +39,6 @@ export class TaskStore {
       [TaskStatus.InProgress]: tasks.filter((t) => t.status === TaskStatus.InProgress),
       [TaskStatus.Done]: tasks.filter((t) => t.status === TaskStatus.Done),
     };
-  });
-
-  readonly filteredTasks = computed(() => {
-    const searchTerm = this.filterStore.searchTerm().trim().toLowerCase();
-    const status = this.filterStore.status();
-    const priority = this.filterStore.priority();
-    const assigneeId = this.filterStore.assigneeId();
-
-    return this.tasks().filter((task) => {
-      if (status !== 'all' && task.status !== status) return false;
-      if (priority !== 'all' && task.priority !== priority) return false;
-      if (assigneeId !== 'all' && task.assignee.id !== assigneeId) return false;
-      if (
-        searchTerm &&
-        !task.title.toLowerCase().includes(searchTerm) &&
-        !task.description.toLowerCase().includes(searchTerm)
-      ) {
-        return false;
-      }
-      return true;
-    });
   });
 
   readonly liveStats = computed<TaskStats>(() => {
@@ -107,8 +93,8 @@ export class TaskStore {
 
   /** Moves a task to `newStatus` at `newIndex`, reindexing `order` for every task shifted in the source/target columns. */
   async moveTask(task: Task, newStatus: TaskStatus, newIndex: number): Promise<void> {
-    const columns = this.tasksByStatus();
-    const sameColumn = task.status === newStatus;
+    const columns: Record<TaskStatus, Task[]> = this.tasksByStatus();
+    const sameColumn: boolean = task.status === newStatus;
 
     const targetTasks = columns[newStatus].filter((t) => t.id !== task.id);
     targetTasks.splice(newIndex, 0, task);

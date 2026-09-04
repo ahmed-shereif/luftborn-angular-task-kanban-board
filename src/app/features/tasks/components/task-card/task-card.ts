@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
-import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
@@ -9,7 +8,7 @@ import { UserAvatar } from '../../../../shared/components/user-avatar/user-avata
 @Component({
   selector: 'app-task-card',
   standalone: true,
-  imports: [MatChipsModule, MatIconModule, MatMenuModule, MatButtonModule, UserAvatar],
+  imports: [MatIconModule, MatMenuModule, MatButtonModule, UserAvatar],
   templateUrl: './task-card.html',
   styleUrl: './task-card.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

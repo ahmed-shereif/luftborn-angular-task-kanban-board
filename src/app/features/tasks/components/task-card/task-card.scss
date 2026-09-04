@@ -1,11 +1,22 @@
 .task-card {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 12px;
+  gap: 12px;
+  padding: 20px;
   background: var(--app-bg-surface);
   border: 1px solid var(--app-border-color);
-  border-radius: var(--app-radius-md);
+  border-radius: var(--app-radius-lg);
+  transition: box-shadow 0.15s ease;
+
+  &:hover,
+  &:focus-within {
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.12);
+  }
+
+  &--overdue {
+    background: var(--app-status-danger-bg);
+    border-left: 5px solid var(--app-status-danger);
+  }
 }
 
 .task-card__header {
@@ -17,10 +28,10 @@
 .task-card__priority {
   display: inline-flex;
   align-items: center;
-  padding: 2px 8px;
-  border-radius: var(--app-radius-sm);
-  font-size: 0.6875rem;
-  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
   text-transform: uppercase;
 
   &--high {
@@ -41,14 +52,14 @@
 
 .task-card__title {
   margin: 0;
-  font-size: 0.9375rem;
-  font-weight: 600;
+  font-size: 1.125rem;
+  font-weight: 700;
   color: var(--app-text-primary);
 }
 
 .task-card__description {
   margin: 0;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   color: var(--app-text-secondary);
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -59,25 +70,42 @@
 .task-card__tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 8px;
+}
+
+.task-card__tag {
+  font-size: 0.8125rem;
+  color: var(--app-text-secondary);
 }
 
 .task-card__footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px solid var(--app-border-color);
 }
 
 .task-card__due-date {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  font-size: 0.75rem;
-  color: var(--app-text-muted);
+  font-size: 0.8125rem;
+  color: var(--app-text-secondary);
 
   &--overdue {
     color: var(--app-status-danger);
     font-weight: 600;
   }
+}
+
+.task-card__assignee {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.task-card__assignee-name {
+  font-size: 0.875rem;
+  color: var(--app-text-primary);
 }
