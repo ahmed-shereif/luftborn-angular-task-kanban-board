@@ -17,9 +17,13 @@
   flex: 1;
   width: 100%;
   gap: 16px;
-  align-items: flex-start;
+  align-items: stretch;
   overflow-x: auto;
-  max-height:600px;
-  overflow-x: scroll;
+  max-height: 600px;
+  min-height: 320px;
+
+  @media (max-width: 600px) {
+    grid-auto-columns: minmax(85vw, 1fr);
+  }
 }
 

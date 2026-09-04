@@ -49,6 +49,8 @@ export class TaskListPage {
   openCreateDialog(): void {
     const ref = this.dialog.open<TaskFormDialog, TaskFormDialogData, TaskFormResult>(TaskFormDialog, {
       data: {},
+      width: '90vw',
+      maxWidth: '480px',
     });
     ref.afterClosed().subscribe((result) => {
       if (result) {
@@ -61,6 +63,8 @@ export class TaskListPage {
   openEditDialog(task: Task): void {
     const ref = this.dialog.open<TaskFormDialog, TaskFormDialogData, TaskFormResult>(TaskFormDialog, {
       data: { task },
+      width: '90vw',
+      maxWidth: '480px',
     });
     ref.afterClosed().subscribe((result) => {
       if (result) {

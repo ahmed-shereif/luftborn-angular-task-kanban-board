@@ -3,6 +3,10 @@
   flex-direction: column;
   gap: 4px;
   min-width: 420px;
+
+  @media (max-width: 600px) {
+    min-width: 0;
+  }
 }
 
 .task-form-dialog__field {
@@ -15,5 +19,10 @@
 
   .task-form-dialog__field {
     flex: 1;
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: 0;
   }
 }
