@@ -5,10 +5,7 @@
 // custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
 @use 'app/styles/theme';
-// Self-hosted fonts (avoids the fonts.googleapis.com/fonts.gstatic.com critical request chain).
-@use '@fontsource/roboto/300.css' as roboto300;
-@use '@fontsource/roboto/400.css' as roboto400;
-@use '@fontsource/roboto/500.css' as roboto500;
+// mat-icon glyphs require this font (they're not real text/characters, so a system stack can't render them).
 @use '@fontsource/material-icons/400.css' as materialIcons400;
 
 // @fontsource/material-icons only ships the @font-face; mat-icon relies on the
@@ -37,7 +34,8 @@ html {
         primary: mat.$azure-palette,
         tertiary: mat.$blue-palette,
       ),
-      typography: Roboto,
+      // OS default font stack only — no font files are downloaded for body text.
+      typography: "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif",
       density: 0,
     )
   );
