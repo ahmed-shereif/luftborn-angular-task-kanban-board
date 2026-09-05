@@ -324,7 +324,7 @@
       "title": "No caching/retry HTTP interceptors. Only the error interceptor is currently registered; request caching and retry-on-transient-failure were considered but not implemented in this pass.",
       "description": "No caching/retry HTTP interceptors. Only the error interceptor is currently registered; request caching and retry-on-transient-failure were considered but not implemented in this pass.No caching/retry HTTP interceptors. Only the error interceptor is currently registered; request caching and retry-on-transient-failure were considered but not implemented in this pass.",
       "priority": "medium",
-      "status": "todo",
+      "status": "in_progress",
       "dueDate": "2026-09-30",
       "assignee": {
         "id": "user-003",
@@ -333,8 +333,9 @@
         "email": "mike.johnson@company.com"
       },
       "tags": ["Frontent"],
-      "order": 6,
-      "id": "VGxcPsnv3nk"
+      "order": 5,
+      "id": "VGxcPsnv3nk",
+      "movedToInProgressAt": "2026-09-05T15:38:52.516Z"
     },
     {
       "title": "taask1",

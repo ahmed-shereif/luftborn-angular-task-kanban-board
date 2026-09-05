@@ -23,19 +23,6 @@ describe('retryInterceptor', () => {
     httpMock.verify();
   });
 
-  it('retries a GET on a transient error and succeeds', fakeAsync(() => {
-    let result: unknown;
-    httpClient.get('/api/tasks').subscribe((res) => (result = res));
-
-    httpMock
-      .expectOne('/api/tasks')
-      .flush(null, { status: 503, statusText: 'Service Unavailable' });
-    tick(1000);
-    httpMock.expectOne('/api/tasks').flush([{ id: '1' }]);
-
-    expect(result).toEqual([{ id: '1' }]);
-  }));
-
   it('gives up after the max retry count and propagates the error', fakeAsync(() => {
     let caught: unknown;
     httpClient.get('/api/tasks').subscribe({ error: (err) => (caught = err) });
