@@ -8,6 +8,10 @@ export interface ActivityEntry {
   taskId: string;
   timestamp: string;
   type: ActivityType;
+  /** The assignee of the affected task at the time of the change; there's no auth/current-user concept in this app. */
+  userId?: string;
+  userName?: string;
+  userAvatar?: string;
 }
 
 const MAX_ENTRIES = 50;

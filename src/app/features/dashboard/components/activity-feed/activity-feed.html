@@ -1,0 +1,32 @@
+<div class="activity-feed">
+  <h3 class="activity-feed__title">Recent Activity</h3>
+
+  @if (entries().length) {
+    <ul class="activity-feed__list">
+      @for (entry of entries(); track entry.id) {
+        <li class="activity-feed__item">
+          <mat-icon class="activity-feed__icon" [class]="'activity-feed__icon--' + entry.type">{{
+            iconFor(entry.type)
+          }}</mat-icon>
+          <div class="activity-feed__body">
+            <span class="activity-feed__message">{{ entry.message }}</span>
+            <div class="activity-feed__meta">
+              @if (entry.userName) {
+                <app-user-avatar
+                  class="activity-feed__user-avatar"
+                  [user]="{ name: entry.userName, avatar: entry.userAvatar }"
+                  size="sm"
+                />
+                <span class="activity-feed__user">{{ entry.userName }}</span>
+                <span class="activity-feed__dot">·</span>
+              }
+              <span class="activity-feed__time">{{ entry.timestamp | relativeTime }}</span>
+            </div>
+          </div>
+        </li>
+      }
+    </ul>
+  } @else {
+    <p class="activity-feed__empty">No activity yet. Changes to tasks will show up here.</p>
+  }
+</div>

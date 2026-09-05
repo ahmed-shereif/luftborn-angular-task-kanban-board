@@ -88,6 +88,9 @@ export class TaskStore {
         type: 'created',
         taskId: created.id,
         message: `Created task "${created.title}"`,
+        userId: created.assignee?.id,
+        userName: created.assignee?.name,
+        userAvatar: created.assignee?.avatar,
       });
     });
   }
@@ -130,6 +133,7 @@ export class TaskStore {
     }
     return this.taskApi.update(id, dto).subscribe(() => {
       this.resource.reload();
+      const assignee = current?.assignee;
       this.activityStore.record({
         type: activityType,
         taskId: id,
@@ -137,18 +141,25 @@ export class TaskStore {
           activityType === 'moved'
             ? `Moved task "${title}" to ${dto.status}`
             : `Updated task "${title}"`,
+        userId: assignee?.id,
+        userName: assignee?.name,
+        userAvatar: assignee?.avatar,
       });
     });
   }
 
   deleteTask(id: string) {
-    const title = this.tasks().find((t) => t.id === id)?.title ?? id;
+    const task = this.tasks().find((t) => t.id === id);
+    const title = task?.title ?? id;
     return this.taskApi.delete(id).subscribe(() => {
       this.resource.reload();
       this.activityStore.record({
         type: 'deleted',
         taskId: id,
         message: `Deleted task "${title}"`,
+        userId: task?.assignee?.id,
+        userName: task?.assignee?.name,
+        userAvatar: task?.assignee?.avatar,
       });
     });
   }
@@ -193,6 +204,9 @@ export class TaskStore {
       type: 'moved',
       taskId: task.id,
       message: `Moved task "${task.title}" to ${newStatus}`,
+      userId: task.assignee?.id,
+      userName: task.assignee?.name,
+      userAvatar: task.assignee?.avatar,
     });
   }
 

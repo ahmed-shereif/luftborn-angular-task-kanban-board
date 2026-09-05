@@ -18,14 +18,14 @@
       ],
       "createdAt": "2026-09-02T23:07:39.442Z",
       "updatedAt": "2026-09-04T23:07:39.442Z",
-      "order": 0,
+      "order": 1,
       "movedToInProgressAt": "2026-09-04T23:26:39.137Z"
     },
     {
       "id": "task-002",
       "title": "Update documentation",
       "description": "Review and update API documentation for v2.0 release",
-      "status": "todo",
+      "status": "in_progress",
       "priority": "medium",
       "dueDate": "2026-09-09",
       "assignee": {
@@ -39,13 +39,14 @@
       ],
       "createdAt": "2026-09-01T23:07:39.442Z",
       "updatedAt": "2026-09-03T23:07:39.442Z",
-      "order": 0
+      "order": 2,
+      "movedToInProgressAt": "2026-09-05T00:08:46.905Z"
     },
     {
       "id": "task-003",
       "title": "Organize team meeting",
       "description": "Schedule and prepare agenda for quarterly planning session",
-      "status": "todo",
+      "status": "in_progress",
       "priority": "low",
       "dueDate": "2026-09-11",
       "assignee": {
@@ -59,7 +60,8 @@
       ],
       "createdAt": "2026-08-31T23:07:39.442Z",
       "updatedAt": "2026-09-03T23:07:39.442Z",
-      "order": 1
+      "order": 0,
+      "movedToInProgressAt": "2026-09-05T00:12:16.968Z"
     },
     {
       "id": "task-015",
@@ -80,7 +82,7 @@
       ],
       "createdAt": "2026-08-19T23:07:39.442Z",
       "updatedAt": "2026-09-04T23:07:39.442Z",
-      "order": 2
+      "order": 0
     },
     {
       "id": "task-016",
@@ -101,28 +103,7 @@
       ],
       "createdAt": "2026-08-20T23:07:39.442Z",
       "updatedAt": "2026-09-03T23:07:39.442Z",
-      "order": 3
-    },
-    {
-      "id": "task-004",
-      "title": "Fix responsive design issues",
-      "description": "Address layout problems on mobile and tablet devices",
-      "status": "done",
-      "priority": "high",
-      "dueDate": "2026-09-07",
-      "assignee": {
-        "id": "user-004",
-        "name": "Emily Davis",
-        "avatar": "ED",
-        "email": "emily.davis@company.com"
-      },
-      "tags": [
-        "Frontend"
-      ],
-      "createdAt": "2026-08-30T23:07:39.442Z",
-      "updatedAt": "2026-09-04T23:07:39.442Z",
-      "order": 4,
-      "completedAt": "2026-09-04T23:26:49.458Z"
+      "order": 1
     },
     {
       "id": "task-005",
@@ -143,7 +124,7 @@
       "createdAt": "2026-08-28T23:07:39.442Z",
       "updatedAt": "2026-09-04T23:07:39.442Z",
       "movedToInProgressAt": "2026-09-04T23:07:39.442Z",
-      "order": 1
+      "order": 3
     },
     {
       "id": "task-006",
@@ -164,7 +145,7 @@
       "createdAt": "2026-08-29T23:07:39.442Z",
       "updatedAt": "2026-09-03T23:07:39.442Z",
       "movedToInProgressAt": "2026-09-03T23:07:39.442Z",
-      "order": 2
+      "order": 4
     },
     {
       "id": "task-007",
@@ -185,7 +166,7 @@
       "createdAt": "2026-08-27T23:07:39.442Z",
       "updatedAt": "2026-09-04T23:07:39.442Z",
       "movedToInProgressAt": "2026-09-04T23:07:39.442Z",
-      "order": 3
+      "order": 5
     },
     {
       "id": "task-008",
@@ -206,7 +187,7 @@
       "createdAt": "2026-08-26T23:07:39.442Z",
       "updatedAt": "2026-09-03T23:07:39.442Z",
       "movedToInProgressAt": "2026-09-03T23:07:39.442Z",
-      "order": 4
+      "order": 6
     },
     {
       "id": "task-017",
@@ -229,7 +210,7 @@
       "createdAt": "2026-08-21T23:07:39.442Z",
       "updatedAt": "2026-09-04T23:07:39.442Z",
       "movedToInProgressAt": "2026-09-04T23:07:39.442Z",
-      "order": 5
+      "order": 7
     },
     {
       "id": "task-009",
@@ -356,6 +337,22 @@
       "createdAt": "2026-08-21T23:07:39.442Z",
       "updatedAt": "2026-08-30T23:07:39.442Z",
       "order": 6
+    },
+    {
+      "title": "aaa",
+      "description": "aa",
+      "priority": "high",
+      "status": "todo",
+      "dueDate": "2026-09-24",
+      "assignee": {
+        "id": "user-001",
+        "name": "John Doe",
+        "avatar": "JD",
+        "email": "john.doe@company.com"
+      },
+      "tags": [],
+      "order": 2,
+      "id": "1SrDMKN1Nt0"
     }
   ],
   "statistics": [
