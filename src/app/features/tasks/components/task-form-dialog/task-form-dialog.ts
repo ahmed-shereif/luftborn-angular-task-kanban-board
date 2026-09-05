@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import {
   AbstractControl,
   NonNullableFormBuilder,
@@ -90,7 +90,10 @@ export class TaskFormDialog {
     tags: this.fb.array<string>([]),
   });
 
-  readonly tags = computed(() => this.form.controls.tags.value);
+  // FormArray.value isn't a signal, so this must stay a plain method (a computed() would never re-run).
+  tags(): string[] {
+    return this.form.controls.tags.value;
+  }
 
   constructor() {
     const task = this.data.task;
