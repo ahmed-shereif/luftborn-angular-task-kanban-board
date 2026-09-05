@@ -1,0 +1,32 @@
+<div class="analytics-page">
+  <h1 class="analytics-page__title">Analytics</h1>
+
+  <div class="analytics-page__grid">
+    <app-chart-card
+      class="analytics-page__cell"
+      title="Tasks by Status"
+      type="doughnut"
+      [data]="statusDistribution()"
+    />
+
+    <app-chart-card
+      class="analytics-page__cell"
+      title="Tasks by Priority"
+      type="bar"
+      [data]="priorityDistribution()"
+    />
+
+    @if (hasCompletionData()) {
+      <app-chart-card
+        class="analytics-page__cell analytics-page__cell--wide"
+        title="Completion Trend"
+        type="line"
+        [data]="completionTrend()"
+      />
+    } @else {
+      <div class="analytics-page__cell analytics-page__cell--wide analytics-page__empty">
+        No completed tasks yet to chart a completion trend.
+      </div>
+    }
+  </div>
+</div>

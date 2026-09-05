@@ -1,0 +1,6 @@
+<div class="chart-card" [class.chart-card--sm]="size() === 'sm'">
+  <h3 class="chart-card__title">{{ title() }}</h3>
+  <div class="chart-card__canvas-wrap">
+    <canvas baseChart [type]="type()" [data]="data()" [options]="resolvedOptions()"></canvas>
+  </div>
+</div>
