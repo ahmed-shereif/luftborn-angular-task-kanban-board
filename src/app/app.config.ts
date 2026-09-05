@@ -6,7 +6,7 @@ import { provideRouter } from '@angular/router';
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
 import { routes } from './app.routes';
-import { errorInterceptor } from './core/interceptors';
+import { errorInterceptor, retryInterceptor } from './core/interceptors';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -14,7 +14,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideNoopAnimations(),
     provideNativeDateAdapter(),
-    provideHttpClient(withInterceptors([errorInterceptor])),
+    // errorInterceptor stays outermost so it only toasts once, after retryInterceptor exhausts retries.
+    provideHttpClient(withInterceptors([errorInterceptor, retryInterceptor])),
     provideCharts(withDefaultRegisterables()),
   ],
 };

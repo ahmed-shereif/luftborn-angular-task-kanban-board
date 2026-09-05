@@ -13,7 +13,7 @@ export interface TaskFilterParams {
 @Injectable({ providedIn: 'root' })
 export class TaskApiService {
   private readonly http = inject(HttpClient);
-  private readonly baseUrl = `${environment.apiBaseUrl}/tasks`;
+  private readonly baseUrl = `${environment.apiBaseUrl}/tasksss`;
 
   /**
    * Builds the tasks list URL from active filter criteria.
