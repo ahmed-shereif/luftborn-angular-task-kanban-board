@@ -5,6 +5,11 @@
 // custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
 @use 'app/styles/theme';
+// Self-hosted fonts (avoids the fonts.googleapis.com/fonts.gstatic.com critical request chain).
+@use '@fontsource/roboto/300.css' as roboto300;
+@use '@fontsource/roboto/400.css' as roboto400;
+@use '@fontsource/roboto/500.css' as roboto500;
+@use '@fontsource/material-icons/400.css' as materialIcons400;
 
 html {
   height: 100%;

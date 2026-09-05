@@ -38,6 +38,7 @@ yarn-error.log
 testem.log
 /typings
 __screenshots__/
+/kanban-logs
 
 # System files
 .DS_Store
