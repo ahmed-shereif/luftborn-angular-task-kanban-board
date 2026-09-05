@@ -14,7 +14,8 @@
         "email": "john.doe@company.com"
       },
       "tags": [
-        "Design"
+        "Design",
+        "ux"
       ],
       "createdAt": "2026-09-02T23:07:39.442Z",
       "updatedAt": "2026-09-04T23:07:39.442Z",
@@ -42,13 +43,13 @@
       "updatedAt": "2026-09-03T23:07:39.442Z",
       "order": 1,
       "movedToInProgressAt": null,
-      "completedAt": "2026-09-05T00:23:16.319Z"
+      "completedAt": "2026-07-05T00:23:16.319Z"
     },
     {
       "id": "task-003",
       "title": "Organize team meeting",
       "description": "Schedule and prepare agenda for quarterly planning session",
-      "status": "in_progress",
+      "status": "done",
       "priority": "low",
       "dueDate": "2026-09-11",
       "assignee": {
@@ -62,8 +63,9 @@
       ],
       "createdAt": "2026-08-31T23:07:39.442Z",
       "updatedAt": "2026-09-03T23:07:39.442Z",
-      "order": 0,
-      "movedToInProgressAt": "2026-09-05T00:12:16.968Z"
+      "order": 2,
+      "movedToInProgressAt": null,
+      "completedAt": "2026-09-05T10:38:19.106Z"
     },
     {
       "id": "task-015",
@@ -84,7 +86,7 @@
       ],
       "createdAt": "2026-08-19T23:07:39.442Z",
       "updatedAt": "2026-09-04T23:07:39.442Z",
-      "order": 1,
+      "order": 0,
       "movedToInProgressAt": "2026-09-05T00:17:23.317Z"
     },
     {
@@ -106,14 +108,14 @@
       ],
       "createdAt": "2026-08-20T23:07:39.442Z",
       "updatedAt": "2026-09-03T23:07:39.442Z",
-      "order": 1,
+      "order": 0,
       "movedToInProgressAt": null
     },
     {
       "id": "task-005",
       "title": "Implement user authentication",
       "description": "Add JWT-based authentication system with refresh tokens",
-      "status": "done",
+      "status": "todo",
       "priority": "high",
       "dueDate": "2026-09-07",
       "assignee": {
@@ -128,8 +130,8 @@
       "createdAt": "2026-08-28T23:07:39.442Z",
       "updatedAt": "2026-09-04T23:07:39.442Z",
       "movedToInProgressAt": null,
-      "order": 2,
-      "completedAt": "2026-09-05T00:23:18.064Z"
+      "order": 3,
+      "completedAt": null
     },
     {
       "id": "task-006",
@@ -150,7 +152,7 @@
       "createdAt": "2026-08-29T23:07:39.442Z",
       "updatedAt": "2026-09-03T23:07:39.442Z",
       "movedToInProgressAt": null,
-      "order": 0,
+      "order": 1,
       "completedAt": null
     },
     {
@@ -172,7 +174,7 @@
       "createdAt": "2026-08-27T23:07:39.442Z",
       "updatedAt": "2026-09-04T23:07:39.442Z",
       "movedToInProgressAt": "2026-09-04T23:07:39.442Z",
-      "order": 2
+      "order": 1
     },
     {
       "id": "task-008",
@@ -193,7 +195,7 @@
       "createdAt": "2026-08-26T23:07:39.442Z",
       "updatedAt": "2026-09-03T23:07:39.442Z",
       "movedToInProgressAt": "2026-09-03T23:07:39.442Z",
-      "order": 3
+      "order": 2
     },
     {
       "id": "task-017",
@@ -216,7 +218,7 @@
       "createdAt": "2026-08-21T23:07:39.442Z",
       "updatedAt": "2026-09-04T23:07:39.442Z",
       "movedToInProgressAt": "2026-09-04T23:07:39.442Z",
-      "order": 4
+      "order": 3
     },
     {
       "id": "task-009",
@@ -237,7 +239,7 @@
       ],
       "createdAt": "2026-09-02T23:07:39.442Z",
       "updatedAt": "2026-09-04T23:07:39.442Z",
-      "order": 5,
+      "order": 4,
       "movedToInProgressAt": "2026-09-05T00:22:24.735Z"
     },
     {
@@ -259,7 +261,7 @@
       ],
       "createdAt": "2026-08-26T23:07:39.442Z",
       "updatedAt": "2026-09-03T23:07:39.442Z",
-      "order": 6,
+      "order": 5,
       "movedToInProgressAt": "2026-09-05T00:22:09.811Z"
     },
     {
@@ -302,7 +304,7 @@
       ],
       "createdAt": "2026-08-23T23:07:39.442Z",
       "updatedAt": "2026-09-01T23:07:39.442Z",
-      "order": 7,
+      "order": 6,
       "movedToInProgressAt": "2026-09-05T00:22:10.479Z"
     },
     {
@@ -324,13 +326,13 @@
       ],
       "createdAt": "2026-08-22T23:07:39.442Z",
       "updatedAt": "2026-08-31T23:07:39.442Z",
-      "order": 3
+      "order": 4
     },
     {
       "id": "task-014",
       "title": "Update dependencies",
       "description": "Update all npm packages to latest stable versions",
-      "status": "in_progress",
+      "status": "todo",
       "priority": "low",
       "dueDate": "2026-08-29",
       "completedAt": null,
@@ -345,8 +347,8 @@
       ],
       "createdAt": "2026-08-21T23:07:39.442Z",
       "updatedAt": "2026-08-30T23:07:39.442Z",
-      "order": 8,
-      "movedToInProgressAt": "2026-09-05T00:22:11.234Z"
+      "order": 5,
+      "movedToInProgressAt": null
     },
     {
       "title": "aaa",
@@ -361,8 +363,91 @@
         "email": "john.doe@company.com"
       },
       "tags": [],
-      "order": 4,
+      "order": 6,
       "id": "1SrDMKN1Nt0"
+    },
+    {
+      "title": "a1a1",
+      "description": "a1",
+      "priority": "medium",
+      "status": "in_progress",
+      "dueDate": "2026-09-29",
+      "assignee": {
+        "id": "user-002",
+        "name": "Sarah Smith",
+        "avatar": "SS",
+        "email": "sarah.smith@company.com"
+      },
+      "tags": [],
+      "order": 7,
+      "id": "B72bfkaEACc",
+      "movedToInProgressAt": "2026-09-05T10:36:08.524Z"
+    },
+    {
+      "title": "asdads",
+      "description": "asdasd",
+      "priority": "medium",
+      "status": "todo",
+      "dueDate": "2026-09-17",
+      "assignee": {
+        "id": "user-001",
+        "name": "John Doe",
+        "avatar": "JD",
+        "email": "john.doe@company.com"
+      },
+      "tags": [],
+      "order": 7,
+      "id": "oAH6_5C7UMs"
+    },
+    {
+      "title": "tags",
+      "description": "asdf",
+      "priority": "medium",
+      "status": "todo",
+      "dueDate": "2026-09-17",
+      "assignee": {
+        "id": "user-004",
+        "name": "Emily Davis",
+        "avatar": "ED",
+        "email": "emily.davis@company.com"
+      },
+      "tags": [],
+      "order": 8,
+      "id": "l7NILBJ5ih8"
+    },
+    {
+      "title": "asasas",
+      "description": "asasasas",
+      "priority": "medium",
+      "status": "todo",
+      "dueDate": "2026-09-09",
+      "assignee": {
+        "id": "user-001",
+        "name": "John Doe",
+        "avatar": "JD",
+        "email": "john.doe@company.com"
+      },
+      "tags": [],
+      "order": 9,
+      "id": "3NNUpnABz9U"
+    },
+    {
+      "title": "sadas",
+      "description": "dasdasd",
+      "priority": "medium",
+      "status": "todo",
+      "dueDate": "2026-09-25",
+      "assignee": {
+        "id": "user-002",
+        "name": "Sarah Smith",
+        "avatar": "SS",
+        "email": "sarah.smith@company.com"
+      },
+      "tags": [
+        "asdas asd as asd sad asd"
+      ],
+      "order": 10,
+      "id": "eZgRzVb1LpI"
     }
   ],
   "statistics": [

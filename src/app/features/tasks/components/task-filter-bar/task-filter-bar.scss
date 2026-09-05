@@ -25,9 +25,13 @@
   color: var(--app-text-secondary);
   cursor: pointer;
 
-  &:hover {
+  &:not(&--active):hover {
     background: var(--app-status-neutral-bg);
   }
+  &--active:hover {
+ opacity: 0.97;  }
+
+
 
   &--active {
     background: var(--app-color-primary);

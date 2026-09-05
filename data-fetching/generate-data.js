@@ -350,8 +350,8 @@ function generateTasks() {
       description: 'Resolved issue preventing users from logging in on mobile devices',
       status: 'done',
       priority: 'high',
-      dueDate: formatDate(addDays(now, -1)), // Was due yesterday
-      completedAt: now.toISOString(),
+      dueDate: formatDate(addDays(now, -5)), // Was due yesterday
+      completedAt: formatDate(addDays(now, -4)),
       assignee: {
         id: 'user-003',
         name: 'Mike Johnson',
@@ -359,7 +359,7 @@ function generateTasks() {
         email: 'mike.johnson@company.com'
       },
       tags: ['Bug Fix'],
-      createdAt: addDays(now, -2).toISOString(),
+      createdAt: addDays(now, -10).toISOString(),
       updatedAt: now.toISOString()
     },
     {

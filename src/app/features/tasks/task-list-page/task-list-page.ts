@@ -95,7 +95,6 @@ export class TaskListPage {
   }
 
   onDrop({ event, status }: TaskColumnDropEvent): void {
-    console.log('👨‍💻', event, status);
     const task = event.item.data as Task;
     if (event.previousContainer === event.container && event.previousIndex === event.currentIndex) {
       return;
