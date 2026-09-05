@@ -4,7 +4,7 @@
       "id": "task-001",
       "title": "Design new homepage layout",
       "description": "Create wireframes and mockups for the new homepage redesign with modern UI elements",
-      "status": "in_progress",
+      "status": "done",
       "priority": "high",
       "dueDate": "2026-09-06",
       "assignee": {
@@ -18,14 +18,15 @@
       ],
       "createdAt": "2026-09-02T23:07:39.442Z",
       "updatedAt": "2026-09-04T23:07:39.442Z",
-      "order": 1,
-      "movedToInProgressAt": "2026-09-04T23:26:39.137Z"
+      "order": 0,
+      "movedToInProgressAt": null,
+      "completedAt": "2026-09-05T00:22:33.931Z"
     },
     {
       "id": "task-002",
       "title": "Update documentation",
       "description": "Review and update API documentation for v2.0 release",
-      "status": "in_progress",
+      "status": "done",
       "priority": "medium",
       "dueDate": "2026-09-09",
       "assignee": {
@@ -39,8 +40,9 @@
       ],
       "createdAt": "2026-09-01T23:07:39.442Z",
       "updatedAt": "2026-09-03T23:07:39.442Z",
-      "order": 2,
-      "movedToInProgressAt": "2026-09-05T00:08:46.905Z"
+      "order": 1,
+      "movedToInProgressAt": null,
+      "completedAt": "2026-09-05T00:23:16.319Z"
     },
     {
       "id": "task-003",
@@ -67,7 +69,7 @@
       "id": "task-015",
       "title": "Prepare Q4 budget report",
       "description": "Compile and analyze financial data for quarterly budget presentation",
-      "status": "todo",
+      "status": "in_progress",
       "priority": "high",
       "dueDate": "2026-09-02",
       "isOverdue": true,
@@ -82,7 +84,8 @@
       ],
       "createdAt": "2026-08-19T23:07:39.442Z",
       "updatedAt": "2026-09-04T23:07:39.442Z",
-      "order": 0
+      "order": 1,
+      "movedToInProgressAt": "2026-09-05T00:17:23.317Z"
     },
     {
       "id": "task-016",
@@ -103,13 +106,14 @@
       ],
       "createdAt": "2026-08-20T23:07:39.442Z",
       "updatedAt": "2026-09-03T23:07:39.442Z",
-      "order": 1
+      "order": 1,
+      "movedToInProgressAt": null
     },
     {
       "id": "task-005",
       "title": "Implement user authentication",
       "description": "Add JWT-based authentication system with refresh tokens",
-      "status": "in_progress",
+      "status": "done",
       "priority": "high",
       "dueDate": "2026-09-07",
       "assignee": {
@@ -123,14 +127,15 @@
       ],
       "createdAt": "2026-08-28T23:07:39.442Z",
       "updatedAt": "2026-09-04T23:07:39.442Z",
-      "movedToInProgressAt": "2026-09-04T23:07:39.442Z",
-      "order": 3
+      "movedToInProgressAt": null,
+      "order": 2,
+      "completedAt": "2026-09-05T00:23:18.064Z"
     },
     {
       "id": "task-006",
       "title": "Optimize database queries",
       "description": "Review and optimize slow queries identified in performance audit",
-      "status": "in_progress",
+      "status": "todo",
       "priority": "medium",
       "dueDate": "2026-09-08",
       "assignee": {
@@ -144,8 +149,9 @@
       ],
       "createdAt": "2026-08-29T23:07:39.442Z",
       "updatedAt": "2026-09-03T23:07:39.442Z",
-      "movedToInProgressAt": "2026-09-03T23:07:39.442Z",
-      "order": 4
+      "movedToInProgressAt": null,
+      "order": 0,
+      "completedAt": null
     },
     {
       "id": "task-007",
@@ -166,7 +172,7 @@
       "createdAt": "2026-08-27T23:07:39.442Z",
       "updatedAt": "2026-09-04T23:07:39.442Z",
       "movedToInProgressAt": "2026-09-04T23:07:39.442Z",
-      "order": 5
+      "order": 2
     },
     {
       "id": "task-008",
@@ -187,7 +193,7 @@
       "createdAt": "2026-08-26T23:07:39.442Z",
       "updatedAt": "2026-09-03T23:07:39.442Z",
       "movedToInProgressAt": "2026-09-03T23:07:39.442Z",
-      "order": 6
+      "order": 3
     },
     {
       "id": "task-017",
@@ -210,16 +216,16 @@
       "createdAt": "2026-08-21T23:07:39.442Z",
       "updatedAt": "2026-09-04T23:07:39.442Z",
       "movedToInProgressAt": "2026-09-04T23:07:39.442Z",
-      "order": 7
+      "order": 4
     },
     {
       "id": "task-009",
       "title": "Fix critical login bug",
       "description": "Resolved issue preventing users from logging in on mobile devices",
-      "status": "done",
+      "status": "in_progress",
       "priority": "high",
       "dueDate": "2026-09-03",
-      "completedAt": "2026-09-04T23:07:39.442Z",
+      "completedAt": null,
       "assignee": {
         "id": "user-003",
         "name": "Mike Johnson",
@@ -231,16 +237,17 @@
       ],
       "createdAt": "2026-09-02T23:07:39.442Z",
       "updatedAt": "2026-09-04T23:07:39.442Z",
-      "order": 0
+      "order": 5,
+      "movedToInProgressAt": "2026-09-05T00:22:24.735Z"
     },
     {
       "id": "task-010",
       "title": "Setup CI/CD pipeline",
       "description": "Configured GitHub Actions for automated testing and deployment",
-      "status": "done",
+      "status": "in_progress",
       "priority": "medium",
       "dueDate": "2026-09-02",
-      "completedAt": "2026-09-03T23:07:39.442Z",
+      "completedAt": null,
       "assignee": {
         "id": "user-001",
         "name": "John Doe",
@@ -252,16 +259,17 @@
       ],
       "createdAt": "2026-08-26T23:07:39.442Z",
       "updatedAt": "2026-09-03T23:07:39.442Z",
-      "order": 1
+      "order": 6,
+      "movedToInProgressAt": "2026-09-05T00:22:09.811Z"
     },
     {
       "id": "task-011",
       "title": "Write unit tests",
       "description": "Add comprehensive unit tests for authentication module",
-      "status": "done",
+      "status": "todo",
       "priority": "high",
       "dueDate": "2026-09-01",
-      "completedAt": "2026-09-02T23:07:39.442Z",
+      "completedAt": null,
       "assignee": {
         "id": "user-002",
         "name": "Sarah Smith",
@@ -279,10 +287,10 @@
       "id": "task-012",
       "title": "Refactor payment module",
       "description": "Clean up and optimize payment processing code",
-      "status": "done",
+      "status": "in_progress",
       "priority": "medium",
       "dueDate": "2026-08-31",
-      "completedAt": "2026-09-01T23:07:39.442Z",
+      "completedAt": null,
       "assignee": {
         "id": "user-004",
         "name": "Emily Davis",
@@ -294,16 +302,17 @@
       ],
       "createdAt": "2026-08-23T23:07:39.442Z",
       "updatedAt": "2026-09-01T23:07:39.442Z",
-      "order": 3
+      "order": 7,
+      "movedToInProgressAt": "2026-09-05T00:22:10.479Z"
     },
     {
       "id": "task-013",
       "title": "Security audit",
       "description": "Conduct comprehensive security review of the application",
-      "status": "done",
+      "status": "todo",
       "priority": "high",
       "dueDate": "2026-08-30",
-      "completedAt": "2026-08-31T23:07:39.442Z",
+      "completedAt": null,
       "assignee": {
         "id": "user-001",
         "name": "John Doe",
@@ -315,16 +324,16 @@
       ],
       "createdAt": "2026-08-22T23:07:39.442Z",
       "updatedAt": "2026-08-31T23:07:39.442Z",
-      "order": 5
+      "order": 3
     },
     {
       "id": "task-014",
       "title": "Update dependencies",
       "description": "Update all npm packages to latest stable versions",
-      "status": "done",
+      "status": "in_progress",
       "priority": "low",
       "dueDate": "2026-08-29",
-      "completedAt": "2026-08-30T23:07:39.442Z",
+      "completedAt": null,
       "assignee": {
         "id": "user-003",
         "name": "Mike Johnson",
@@ -336,7 +345,8 @@
       ],
       "createdAt": "2026-08-21T23:07:39.442Z",
       "updatedAt": "2026-08-30T23:07:39.442Z",
-      "order": 6
+      "order": 8,
+      "movedToInProgressAt": "2026-09-05T00:22:11.234Z"
     },
     {
       "title": "aaa",
@@ -351,7 +361,7 @@
         "email": "john.doe@company.com"
       },
       "tags": [],
-      "order": 2,
+      "order": 4,
       "id": "1SrDMKN1Nt0"
     }
   ],
