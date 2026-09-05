@@ -31,6 +31,16 @@ const STATUS_MESSAGES: Partial<Record<HttpStatusCode, string>> = {
   [HttpStatusCode.GatewayTimeout]: 'Server took too long to respond. Please try again.',
 };
 
+/**
+ * Maps a failed HTTP request to a user-facing message.
+ * Precedence: non-HttpErrorResponse (e.g. client-side/network throw) -> generic message;
+ * status 0 (no response reached the browser, e.g. CORS/offline) -> connectivity message;
+ * server-provided `error.message` -> shown verbatim; otherwise a friendly message keyed by
+ * status code, falling back to a generic "status N" message for unmapped codes.
+ *
+ * @param error - The value thrown by the HTTP pipeline.
+ * @returns A short, user-facing error string safe to display in a toast.
+ */
 function toErrorMessage(error: unknown): string {
   if (!(error instanceof HttpErrorResponse)) {
     return 'An unexpected error occurred.';

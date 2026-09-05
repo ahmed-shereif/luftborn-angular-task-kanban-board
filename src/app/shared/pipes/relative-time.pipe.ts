@@ -18,6 +18,14 @@ const UNITS: readonly [Intl.RelativeTimeFormatUnit, number][] = [
 export class RelativeTimePipe implements PipeTransform {
   private readonly formatter = new Intl.RelativeTimeFormat('en', { numeric: 'auto' });
 
+  /**
+   * Formats `value` relative to now, picking the largest unit from `UNITS` (year down to minute)
+   * whose threshold the elapsed time exceeds, falling back to seconds for sub-minute diffs and
+   * minutes if nothing else matched. `Intl.RelativeTimeFormat` handles past/future phrasing.
+   *
+   * @param value - ISO date string, `Date`, or nullish value to format.
+   * @returns A relative time string (e.g. "3 hours ago", "in 2 days"), or `''` if `value` is empty/invalid.
+   */
   transform(value: string | Date | null | undefined): string {
     if (!value) {
       return '';

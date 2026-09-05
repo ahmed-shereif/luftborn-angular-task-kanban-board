@@ -21,6 +21,10 @@ export class TaskApiService {
    * `_where` overrides all other params in json-server v1, so once a search term is present every
    * active filter is folded into a single `_where` AND/OR tree to keep status/priority/assignee working.
    */
+  /**
+   * @param filters - Active filter criteria from `FilterStore`.
+   * @returns The full tasks-list URL, with query params or a `_where` clause encoding the filters.
+   */
   private buildTasksUrl(filters: TaskFilterParams): string {
     const searchTerm = filters.searchTerm.trim();
 
@@ -39,7 +43,8 @@ export class TaskApiService {
     ];
     if (filters.status !== 'all') conditions.push({ status: { eq: filters.status } });
     if (filters.priority !== 'all') conditions.push({ priority: { eq: filters.priority } });
-    if (filters.assigneeId !== 'all') conditions.push({ assignee: { id: { eq: filters.assigneeId } } });
+    if (filters.assigneeId !== 'all')
+      conditions.push({ assignee: { id: { eq: filters.assigneeId } } });
 
     const where = conditions.length === 1 ? conditions[0] : { and: conditions };
     return `${this.baseUrl}?_where=${encodeURIComponent(JSON.stringify(where))}`;
