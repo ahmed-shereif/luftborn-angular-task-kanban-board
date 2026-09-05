@@ -351,7 +351,7 @@ function generateTasks() {
       status: 'done',
       priority: 'high',
       dueDate: formatDate(addDays(now, -5)), // Was due yesterday
-      completedAt: formatDate(addDays(now, -4)),
+      completedAt: addDays(now, -9).toISOString(),
       assignee: {
         id: 'user-003',
         name: 'Mike Johnson',
@@ -405,7 +405,7 @@ function generateTasks() {
       status: 'done',
       priority: 'medium',
       dueDate: formatDate(addDays(now, -4)), // Was due 4 days ago
-      completedAt: addDays(now, -3).toISOString(),
+      completedAt: addDays(now, -2).toISOString(),
       assignee: {
         id: 'user-004',
         name: 'Emily Davis',
@@ -414,7 +414,7 @@ function generateTasks() {
       },
       tags: ['Refactoring'],
       createdAt: addDays(now, -12).toISOString(),
-      updatedAt: addDays(now, -3).toISOString()
+      updatedAt: addDays(now, -2).toISOString()
     },
     {
       id: 'task-013',
@@ -423,7 +423,7 @@ function generateTasks() {
       status: 'done',
       priority: 'high',
       dueDate: formatDate(addDays(now, -5)), // Was due 5 days ago
-      completedAt: addDays(now, -4).toISOString(),
+      completedAt: addDays(now, -6).toISOString(),
       assignee: {
         id: 'user-001',
         name: 'John Doe',
@@ -432,7 +432,7 @@ function generateTasks() {
       },
       tags: ['Security'],
       createdAt: addDays(now, -13).toISOString(),
-      updatedAt: addDays(now, -4).toISOString()
+      updatedAt: addDays(now, -6).toISOString()
     },
     {
       id: 'task-014',
@@ -441,7 +441,7 @@ function generateTasks() {
       status: 'done',
       priority: 'low',
       dueDate: formatDate(addDays(now, -6)), // Was due 6 days ago
-      completedAt: addDays(now, -5).toISOString(),
+      completedAt: addDays(now, -4).toISOString(),
       assignee: {
         id: 'user-003',
         name: 'Mike Johnson',
@@ -450,7 +450,7 @@ function generateTasks() {
       },
       tags: ['Maintenance'],
       createdAt: addDays(now, -14).toISOString(),
-      updatedAt: addDays(now, -5).toISOString()
+      updatedAt: addDays(now, -4).toISOString()
     }
   ];
 
