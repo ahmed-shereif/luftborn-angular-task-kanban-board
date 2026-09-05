@@ -45,13 +45,13 @@ describe('errorInterceptor', () => {
   });
 
   it('maps status 0 to a connectivity message', () => {
-    httpClient.get('/api/thing').subscribe({ error: () => {} });
+    httpClient.get('/api/thing').subscribe({ error: () => { /* noop */ } });
     httpMock.expectOne('/api/thing').error(new ProgressEvent('error'), { status: 0, statusText: 'Unknown' });
     expectToastMessage('Unable to reach the server. Check your connection.');
   });
 
   it('uses the server-provided message when present', () => {
-    httpClient.get('/api/thing').subscribe({ error: () => {} });
+    httpClient.get('/api/thing').subscribe({ error: () => { /* noop */ } });
     httpMock
       .expectOne('/api/thing')
       .flush({ message: 'Custom server message' }, { status: 400, statusText: 'Bad Request' });
@@ -72,13 +72,13 @@ describe('errorInterceptor', () => {
     [503, 'Service unavailable. Please try again later.'],
     [504, 'Server took too long to respond. Please try again.'],
   ])('maps status %i to the expected message', (status, expected) => {
-    httpClient.get('/api/thing').subscribe({ error: () => {} });
+    httpClient.get('/api/thing').subscribe({ error: () => { /* noop */ } });
     httpMock.expectOne('/api/thing').flush(null, { status, statusText: 'Error' });
     expectToastMessage(expected);
   });
 
   it('falls back to a generic message for an unmapped status code', () => {
-    httpClient.get('/api/thing').subscribe({ error: () => {} });
+    httpClient.get('/api/thing').subscribe({ error: () => { /* noop */ } });
     httpMock.expectOne('/api/thing').flush(null, { status: 418, statusText: "I'm a teapot" });
     expectToastMessage('Request failed (status 418).');
   });

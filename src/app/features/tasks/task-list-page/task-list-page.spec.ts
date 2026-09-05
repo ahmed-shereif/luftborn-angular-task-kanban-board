@@ -77,7 +77,7 @@ describe('TaskListPage', () => {
 
   it('openCreateDialog() adds the task and shows a success toast when the dialog resolves', () => {
     const fixture = create();
-    const addTaskSpy = vi.spyOn(taskStore, 'addTask').mockImplementation(() => ({ subscribe: () => {} }) as never);
+    const addTaskSpy = vi.spyOn(taskStore, 'addTask').mockImplementation(() => ({ subscribe: () => { /* noop */ } }) as never);
     const result = { title: 'New', status: TaskStatus.Todo };
     dialogOpenSpy.mockReturnValue({ afterClosed: () => of(result) });
 
@@ -101,7 +101,7 @@ describe('TaskListPage', () => {
   it('openEditDialog() updates the task and shows a success toast when the dialog resolves', () => {
     const fixture = create();
     const task = makeTask();
-    const updateTaskSpy = vi.spyOn(taskStore, 'updateTask').mockImplementation(() => ({ subscribe: () => {} }) as never);
+    const updateTaskSpy = vi.spyOn(taskStore, 'updateTask').mockImplementation(() => ({ subscribe: () => { /* noop */ } }) as never);
     dialogOpenSpy.mockReturnValue({ afterClosed: () => of({ title: 'Renamed' }) });
 
     fixture.componentInstance.openEditDialog(task);
@@ -113,7 +113,7 @@ describe('TaskListPage', () => {
   it('onDeleteTask() deletes the task and shows a success toast when confirmed', () => {
     const fixture = create();
     const task = makeTask();
-    const deleteTaskSpy = vi.spyOn(taskStore, 'deleteTask').mockImplementation(() => ({ subscribe: () => {} }) as never);
+    const deleteTaskSpy = vi.spyOn(taskStore, 'deleteTask').mockImplementation(() => ({ subscribe: () => { /* noop */ } }) as never);
     dialogOpenSpy.mockReturnValue({ afterClosed: () => of(true) });
 
     fixture.componentInstance.onDeleteTask(task);
@@ -125,7 +125,7 @@ describe('TaskListPage', () => {
   it('onDeleteTask() does nothing when not confirmed', () => {
     const fixture = create();
     const task = makeTask();
-    const deleteTaskSpy = vi.spyOn(taskStore, 'deleteTask').mockImplementation(() => ({ subscribe: () => {} }) as never);
+    const deleteTaskSpy = vi.spyOn(taskStore, 'deleteTask').mockImplementation(() => ({ subscribe: () => { /* noop */ } }) as never);
     dialogOpenSpy.mockReturnValue({ afterClosed: () => of(false) });
 
     fixture.componentInstance.onDeleteTask(task);
