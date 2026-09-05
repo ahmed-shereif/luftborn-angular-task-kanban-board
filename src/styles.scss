@@ -11,6 +11,24 @@
 @use '@fontsource/roboto/500.css' as roboto500;
 @use '@fontsource/material-icons/400.css' as materialIcons400;
 
+// @fontsource/material-icons only ships the @font-face; mat-icon relies on the
+// `.material-icons` fontSet class (normally provided by Google's icon stylesheet).
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
 html {
   height: 100%;
   @include mat.theme(
